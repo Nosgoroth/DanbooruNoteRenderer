@@ -2,7 +2,7 @@ import os, sys
 from dbnoterenderer import DanbooruPost, retrieveOrCacheJson, CONFIG
 
 
-def downloadPool(poolid, debug=False, innerdebug=False):
+def renderPool(poolid, debug=False, innerdebug=False):
 	pooldata = retrieveOrCacheJson(
 		CONFIG.DOMAIN+"/pools/%d.json" % poolid,
 		"cache/pool_%d.json" % poolid
@@ -27,7 +27,7 @@ def main():
 		return
 	print("Downloading all items in pool", poolid)
 	print()
-	downloadPool(poolid, debug=True)
+	renderPool(poolid, debug=True)
 
 
 
