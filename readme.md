@@ -1,6 +1,6 @@
 # DanbooruNoteRenderer
 
-Renders all HTML notes in a Danbooru post into its image.
+Renders all notes in a Danbooru post into its image, including HTML styles.
 
 Developed in a few hours because I don't have the patience to typeset. As an example, [this post](http://danbooru.donmai.us/posts/2836730?pool_id=12768) becomes [this image](https://i.imgur.com/3kcbtho.png).
 
@@ -53,6 +53,17 @@ Edit `DanbooruNote.render` to make changes. Currently uses `font family: "Wild W
 
 To limit accesses to Danbooru API, the JSON results of the API calls as well as the original downloaded images are kept in a folder named `cache`. Delete it to redownload things, or use the images there if you want to composite a better typeset by combining them with the rendered image and some manual touches.
 
-## It's slow!
+## FAQ
 
-Yyyyep. Calling the `wkhtmltoimage` binary to render the html of each and every note will do that.
+### It's slow!
+
+Yyyyep. Calling the `wkhtmltoimage` binary to render the html of each and every note will do that. Then again, it doesn't bother me too much.
+
+### Hyphenation?
+
+That would be cool, yes. My `wkhtmltoimage` binary isn't listening to `hyphens: auto;`, though, so if you have a better idea, please go ahead and pull request.
+
+### Maybe check for textbox overlapping?
+
+Certainly a possibility, and I considered it, but this was a three hour project to render a pool because I couldnt be bothered to manually typeset it myself. You could definitely do something with the coordinates in `DanbooruPost.renderNotes`. Don't let me stop you.
+
