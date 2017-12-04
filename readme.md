@@ -1,12 +1,18 @@
 # DanbooruNoteRenderer
 
-Developed in a few hours because I don't have the patience to typeset, and provided in the hopes that it's useful to someone, maybe as a starting point for a proper typeset or as a low-effort typeset for whatever reason. As an example, [this post](http://danbooru.donmai.us/posts/2836730?pool_id=12768) becomes [this image](https://i.imgur.com/3kcbtho.png).
+Renders all HTML notes in a Danbooru post into its image.
+
+Developed in a few hours because I don't have the patience to typeset. As an example, [this post](http://danbooru.donmai.us/posts/2836730?pool_id=12768) becomes [this image](https://i.imgur.com/3kcbtho.png).
+
+_Definitely_ don't expect the results to be anywhere near perfect. With luck they'll be readable, but sometimes you might find textboxes overlapping each other or other undesired results. The output of this script could be used as a starting point for a proper typeset, or as a low effort low quality typeset if you really want a typeset but none exists and you can't be bothered to do it yourself.
 
 Not in active development, but feel free to fork or pull request.
 
 ## Requisites
 
-**Python 3.2+**. Depends on requests, pillow and imgkit, which itself requires wkhtmltox installed. Developed and tested on macOS 10.13.
+**Python 3.2+**. Depends on requests, pillow and imgkit, which itself requires wkhtmltox installed. Maybe install the "Wild Words" font too.
+
+Developed and tested on macOS 10.13.
 
 ## Usage
 
@@ -38,7 +44,15 @@ from pool import renderPool
 renderPool(12768, debug=True, innerdebug=False)
 ```
 
+
+## Styles
+
+Edit `DanbooruNote.render` to make changes. Currently uses `font family: "Wild Words", sans-serif;` as default, but will use any font declared in the html of the note if it's installed in your system.
+
 ## Cache
 
 To limit accesses to Danbooru API, the JSON results of the API calls as well as the original downloaded images are kept in a folder named `cache`. Delete it to redownload things, or use the images there if you want to composite a better typeset by combining them with the rendered image and some manual touches.
 
+## It's slow!
+
+Yyyyep. Calling the `wkhtmltoimage` binary to render the html of each and every note will do that.
