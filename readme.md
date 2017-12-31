@@ -44,6 +44,20 @@ from pool import renderPool
 renderPool(12768, debug=True, innerdebug=False)
 ```
 
+### Render a pool slice
+
+For example, to render the latest chapter in an ongoing pool.
+
+Run `python3 pool.py 12768 --from 2968659` (a post id) to render all posts in a pool from the one with the specified ID. You can use it together with `--to 2968672` if you want to render a slice that doesn't go to the end of the pool.
+
+When including the code:
+
+```py
+from pool import renderPool
+
+renderPool(12768, fromid=2968659, toid=2968672, debug=True, innerdebug=False)
+```
+
 
 ## Styles
 
